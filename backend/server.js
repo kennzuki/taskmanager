@@ -12,6 +12,18 @@ process.on('uncaughtException', function (err) {
   console.log(err);
 });
 
+app.get('/api/products', async (res, req) => {
+ 
+  try {
+    const products = await Product.find({})
+    res.status(200).json({ success: true, data:products });
+  } catch (error) {
+    console.log("error findig product",error.message);
+    
+    res.status(500).json({ success: false, message: 'server error' });
+  }
+})
+
 app.post('api/products', async (req, res) => {
   const product = req.body; // user will send this data
 
@@ -32,15 +44,17 @@ app.post('api/products', async (req, res) => {
   }
 });
 
-app.delete('api/products:id', async (res, req) => {
+
+
+app.delete('api/products:id', async (req, res) => {
   const { id } = req.params;
   console.log('id', id);
 
   try {
     await product.findByIdAndDelete(id);
-    res.status(200).json({ success: true, msg: 'product deleted' });
+    res.status(200).json({ success: true, message: 'product deleted' });
   } catch (error) {
-    res.status(404).json({ success: false, msg: 'Product not found' });
+    res.status(404).json({ success: false, message: 'Product not found' });
   }
 });
 
