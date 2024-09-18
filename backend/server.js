@@ -13,7 +13,7 @@ process.on('uncaughtException', function (err) {
   console.log(err);
 });
 
-app.get('/api/products', async (res, req) => {
+app.get('/api/products', async (req, res) => {
  
   try {
     const products = await Product.find({})
@@ -24,6 +24,7 @@ app.get('/api/products', async (res, req) => {
     res.status(500).json({ success: false, message: 'server error' });
   }
 })
+
 
 app.post('api/products', async (req, res) => {
   const product = req.body; // user will send this data
