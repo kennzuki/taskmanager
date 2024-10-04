@@ -12,7 +12,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg={useColorMode(bg-gray-100,bg-gray-900)} p-8 flex items-center justify-between gap-4 bg-gradient-to-r from-cyan-400 to-blue-500">
+    <div className="p-6 flex items-center justify-between gap-4 bg-gradient-to-r from-cyan-400 to-blue-500">
       <h1 className="font-bold text-3xl"><Link to={"/"}>Product Store 🛒</Link></h1>
       <ul className="flex gap-4 place-items-center text-white">
       <Link className="" to='/create}'>
